@@ -1,0 +1,6 @@
+senai\dao\ClienteDAO.class
+senai\model\Transacoes.class
+senai\util\ConnectionFactory.class
+senai\Servlet\AdminServlet.class
+senai\Servlet\ServletCliente.class
+senai\model\Cliente.class
