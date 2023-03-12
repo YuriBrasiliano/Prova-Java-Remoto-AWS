@@ -18,7 +18,7 @@
 					
 				</div>
 
-				<form class="login100-form">
+				<form class="login100-form" action = "../AdminServlet" method="post">
 
 					<div class="wrap-input100">
 						<input class="input100" type="text" name="Email" placeholder="Email" required>
@@ -36,14 +36,7 @@
 						</button>
 					</div>
 					<br/><br/>
-					<div class="text-center">
-						<span class="txt1">
-							Esqueceu a Senha ?<br>
-						</span>
-						<a class="txt2" href="#">
-							Clique Aqui!
-						</a>
-					</div>
+
 				
 				</form>
 			</div>
