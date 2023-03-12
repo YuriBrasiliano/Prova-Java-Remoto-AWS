@@ -1,6 +1,12 @@
-senai\dao\ClienteDAO.class
 senai\model\Transacoes.class
-senai\util\ConnectionFactory.class
 senai\Servlet\AdminServlet.class
-senai\Servlet\ServletCliente.class
+senai\Servlet\LoginServlet.class
+senai\Servlet\ServletConsSaldo.class
+senai\Servlet\ServletTransferir.class
+senai\Servlet\ServletCriarConta.class
+senai\Servlet\ServletExtrato.class
+senai\util\ConnectionFactory.class
+senai\Servlet\ServletRetirar.class
+senai\Servlet\ServletDepositar.class
 senai\model\Cliente.class
+senai\model\Conta.class
