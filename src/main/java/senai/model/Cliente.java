@@ -8,7 +8,7 @@ public class Cliente {
 	private String DataNascimentoCliente;
 	private String CPFCliente;
 	private String EnderecoCliente;
-	private int numContaCliente;
+	private String numContaCliente;
 	private String senhaCliente;
 	
 	
@@ -73,12 +73,12 @@ public class Cliente {
 	}
 
 
-	public int getNumContaCliente() {
+	public String getNumContaCliente() {
 		return numContaCliente;
 	}
 
 
-	public void setNumContaCliente(int numContaCliente) {
+	public void setNumContaCliente(String numContaCliente) {
 		this.numContaCliente = numContaCliente;
 	}
 	public String getSenhaCliente() {

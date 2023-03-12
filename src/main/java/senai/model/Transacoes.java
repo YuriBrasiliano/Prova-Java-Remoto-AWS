@@ -4,13 +4,13 @@ import java.sql.Date;
 
 public class Transacoes {
 	
-	private int numContaCliente;
+	private String numContaCliente;
 	private String TipoTransacao;
 	private Date DataTransacao;
-	private float valorTransacao;
+	private Float valorTransacao;
 	
 	
-	public Transacoes(int numContaCliente, String tipoTransacao, Date dataTransacao, float valorTransacao) {
+	public Transacoes(String numContaCliente, String tipoTransacao, Date dataTransacao, Float valorTransacao) {
 		super();
 		this.numContaCliente = numContaCliente;
 		TipoTransacao = tipoTransacao;
@@ -22,11 +22,12 @@ public class Transacoes {
 
 	}
 
-	public int getNumContaCliente() {
+
+	public String getNumContaCliente() {
 		return numContaCliente;
 	}
 
-	public void setNumContaCliente(int numContaCliente) {
+	public void setNumContaCliente(String numContaCliente) {
 		this.numContaCliente = numContaCliente;
 	}
 
@@ -46,11 +47,11 @@ public class Transacoes {
 		DataTransacao = dataTransacao;
 	}
 
-	public float getValorTransacao() {
+	public Float getValorTransacao() {
 		return valorTransacao;
 	}
 
-	public void setValorTransacao(float valorTransacao) {
+	public void setValorTransacao(Float valorTransacao) {
 		this.valorTransacao = valorTransacao;
 	}
 	

@@ -21,7 +21,7 @@
 						</span> </div>
 					
 				</div>
-				<form class="login100-form" action="../ServletCliente" method="post">
+				<form class="login100-form" action="../ServletCriarConta" method="post">
 				<input type = "hidden" name ="cmd" value="CriarConta"> <br />
 						<div class="wrap-input100">
 						<input class="input100" type="text" name="nomeCadastro" placeholder="Digite seu Nome Completo" required>
