@@ -5,6 +5,7 @@
 <head>
 	<title>Abrir conta FIESC</title>
 	<meta charset="UTF-8">
+	<script src="../js/validadorCPF.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
@@ -14,7 +15,7 @@
 			<div class="wrap-login100">
 				<div class="login100-pic">
 									<span class="login100-form-title">
-						Seja Bem Vindo ao Banco FIESP!<br/><br/><br/><br/>Por favor, preencher os dados para a abertura de conta.<br/><br/><br/></span>
+						Seja Bem Vindo ao Banco FIESP!<br/><br/>Por favor, preencher os dados para a abertura de conta.</span>
 						<div class="text-center">
 						<span class="txt1">
 							<a href="index.jsp" style="text-decoration:none;">Voltar</a><br>
@@ -22,13 +23,12 @@
 					
 				</div>
 				<form class="login100-form" action="../ServletCriarConta" method="post">
-				<input type = "hidden" name ="cmd" value="CriarConta"> <br />
 						<div class="wrap-input100">
-						<input class="input100" type="text" name="nomeCadastro" placeholder="Digite seu Nome Completo" required>
+						<input class="input100" type="text" name="nomeCadastro" placeholder="Digite seu Nome Completo" required pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$">
 						<span class="focus-input100"></span>
 					</div>
 					<div class="wrap-input100">
-						<input class="input100" type="number" name="cpfCadastro" placeholder="Digite seu CPF" required>
+						<input class="input100"  oninput="mascara(this)" type="text" name="cpfCadastro" placeholder="Digite seu CPF" required>
 						<span class="focus-input100"></span>
 					</div>
 					<div class="wrap-input100">

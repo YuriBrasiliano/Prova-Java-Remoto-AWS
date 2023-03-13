@@ -21,16 +21,15 @@
 					
 				</div>
 
-				<form class="login100-form" action="../LoginServlet" method="post">
-				<input type = "hidden" name ="cmd" value="FazerLogin"> <br />
+				<form class="login100-form" action="../LoginServlet" method="post"><br />
 
 					<div class="wrap-input100">
-						<input class="input100" type="number" name="CPFCliente" placeholder="CPF/Número da Conta" required>
+						<input class="input100" type="number" name="CPFCliente" placeholder="Digite seu CPF" required>
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100">
-						<input class="input100" type="password" name="SenhaCliente" placeholder="Senha" required>
+						<input class="input100" type="password" name="SenhaCliente" placeholder="Digite sua Senha" required>
 						<span class="focus-input100"></span>
 					</div>
 					

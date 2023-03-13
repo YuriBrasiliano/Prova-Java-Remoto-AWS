@@ -56,10 +56,10 @@
 						            out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
 						        }
 						    %><br/><br/><br/><br/>
-
-						<span class="txt1">
+						    						<span class="txt1">
 							<a href="conta.jsp" style="text-decoration:none;">Voltar</a><br>
-						</span> </div>
+						</span>
+ </div>
 				
 				<div class="login100-form">
 				<%

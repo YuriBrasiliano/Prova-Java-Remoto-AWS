@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="../js/validadorCPF.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <title>Cadastrar Cliente</title>
 </head>
@@ -31,11 +32,11 @@
 				<form class="login100-form" action="../ServletAdminCadCliente" method="post">
 				<input type = "hidden" name ="cmd" value="CriarConta"> <br />
 						<div class="wrap-input100">
-						<input class="input100" type="text" name="nomeCadastro" placeholder="Digite o Nome Completo" required>
+						<input class="input100" type="text" name="nomeCadastro" placeholder="Digite o Nome Completo" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
 						<span class="focus-input100"></span>
 					</div>
 					<div class="wrap-input100">
-						<input class="input100" type="number" name="cpfCadastro" placeholder="Digite o CPF" required>
+						<input class="input100" oninput="mascara(this)" type="text" name="cpfCadastro" placeholder="Digite o CPF" required>
 						<span class="focus-input100"></span>
 					</div>
 					<div class="wrap-input100">

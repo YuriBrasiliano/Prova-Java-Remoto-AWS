@@ -22,7 +22,7 @@
 			<div class="wrap-login100">
 				<div class="login100-pic">
 									<span class="login100-form-title">
-						Alterar Cadastro <br/><br/>Cliente<br/><br/><%
+						Alterar Cadastro<br/><br/><%
 						        try {
 						        	String numConta = request.getParameter("numConta");
 						            Connection conn = ConnectionFactory.getConnection();

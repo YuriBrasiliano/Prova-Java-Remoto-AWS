@@ -27,23 +27,15 @@
 							<br/><br/> <a href="deslogar.jsp" style="text-decoration:none;">Deslogar</a><br>
 						</span> </div>
 				<div class="login100-form">
-				<span class="login100-form-title">
-						Oque deseja fazer?</span>
-						<button type='submit' class="login100-form-btn">
-							<a href="adminCadCliente.jsp" style="text-decoration:none; color:white">Cadastrar Cliente</a>
-						</button>
+				<span class="login100-form-title">Oque deseja fazer?</span>
+				
+						<button onclick="window.location.href = 'adminCadCliente.jsp'" type='submit' class="login100-form-btn">Cadastrar Cliente</button>
 						<br/><br/>
-						<button type='submit' class="login100-form-btn">
-							<a href="adminCadConta.jsp" style="text-decoration:none; color:white">Cadastrar Conta</a>
-						</button>
+						<button onclick="window.location.href = 'adminCadConta.jsp'" type='submit' class="login100-form-btn">Cadastrar Conta</button>
 						<br/><br/>
-						<button type='submit' class="login100-form-btn">
-							<a href="adminCadMovimentacao.jsp" style="text-decoration:none; color:white">Cadastrar Movimentação</a>
-						</button>
+						<button onclick="window.location.href = 'adminCadMovimentacao.jsp'" type='submit' class="login100-form-btn">Cadastrar Movimentação</button>
 						<br/><br/>
-						<button type='submit' class="login100-form-btn">
-							<a href="adminAlterarCliente.jsp" style="text-decoration:none; color:white">Alterar Dados do Cliente</a>
-						</button>
+						<button onclick="window.location.href = 'adminAlterarCliente.jsp'" type='submit' class="login100-form-btn">Alterar Dados do Cliente</button>
 					</div>
 
 			</div>

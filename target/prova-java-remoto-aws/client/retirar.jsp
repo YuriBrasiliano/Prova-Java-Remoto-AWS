@@ -3,7 +3,7 @@
         <%@ page import="java.sql.*" %>
     <%@ page import="senai.util.*" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 	<title>Retirar</title>
 	<meta charset="UTF-8">
@@ -24,7 +24,7 @@
 			<div class="wrap-login100">
 				<div class="login100-pic">
 									<span class="login100-form-title">
-						Retirar<br/><br/><br/><br/>Saldo Atual:<br/><br/>
+						Retirar Conta <br><br><br><% out.print(numConta);%><br/><br/><br/><br/>Saldo Atual:<br/><br/>
 						<%
 						        try {
 						            Connection conn = ConnectionFactory.getConnection();

@@ -24,7 +24,9 @@
 			<div class="wrap-login100">
 				<div class="login100-pic">
 									<span class="login100-form-title">
-						Depositar<br/><br/><br/><br/>Saldo Atual:<br/><br/><br/>
+						Depositar Conta <br/><br/><%
+						out.print(numConta);						
+						%><br/><br/><br/>Saldo Atual:<br/><br/>
 								<%
 						        try {
 						            Connection conn = ConnectionFactory.getConnection();

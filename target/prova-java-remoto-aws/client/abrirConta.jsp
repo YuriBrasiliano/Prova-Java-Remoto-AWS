@@ -14,15 +14,14 @@
 			<div class="wrap-login100">
 				<div class="login100-pic">
 									<span class="login100-form-title">
-						Seja Bem Vindo ao Banco FIESP!<br/><br/><br/><br/>Por favor, preencher os dados para a abertura de conta.<br/><br/><br/></span>
+						Seja Bem Vindo ao Banco FIESP!<br/><br/>Por favor, preencher os dados para a abertura de conta.</span>
 						<div class="text-center">
 						<span class="txt1">
-							<a href="conta.jsp" style="text-decoration:none;">Voltar</a><br>
+							<a href="index.jsp" style="text-decoration:none;">Voltar</a><br>
 						</span> </div>
 					
 				</div>
 				<form class="login100-form" action="../ServletCriarConta" method="post">
-				<input type = "hidden" name ="cmd" value="CriarConta"> <br />
 						<div class="wrap-input100">
 						<input class="input100" type="text" name="nomeCadastro" placeholder="Digite seu Nome Completo" required>
 						<span class="focus-input100"></span>

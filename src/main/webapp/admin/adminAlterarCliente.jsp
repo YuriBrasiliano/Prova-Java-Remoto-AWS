@@ -21,7 +21,7 @@
 			<div class="wrap-login100">
 				<div class="login100-pic">
 									<span class="login100-form-title">
-<br/><br/><br/>Alterar Dados do Cliente<br/><br/> É necessário ter uma conta cadastrada!<br/></span>
+Alterar Dados do Cliente<br/><br/> É necessário ter uma conta cadastrada!</span>
 						<div class="text-center">
 						<span class="txt1">
 							<a href="admin_dashboard.jsp" style="text-decoration:none;">Voltar</a><br>

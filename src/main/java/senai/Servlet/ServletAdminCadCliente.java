@@ -40,19 +40,16 @@ public class ServletAdminCadCliente extends HttpServlet {
 		}catch (Exception erro) {
 			throw new ServletException("Erro " + erro.getMessage());
 		}
-		
-		
-		String numContaCliente = new StringBuilder(request.getParameter("cpfCadastro")).reverse().toString();
 	    
 	    try {
 			String sql = "INSERT INTO clientes(numContaCliente, nomeCliente,DataNascimentoCliente,CPFCliente,EnderecoCliente,senhaCliente)"
 					+ "VALUES (?, ?, ?, ?, ?, ?)";
 			
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, numContaCliente);
+			ps.setString(1, new StringBuilder(request.getParameter("cpfCadastro")).reverse().toString().replaceAll("[^0-9]", ""));
 			ps.setString(2, request.getParameter("nomeCadastro"));
 			ps.setString(3, request.getParameter("dateCadastro"));
-			ps.setString(4, request.getParameter("cpfCadastro"));
+			ps.setString(4, request.getParameter("cpfCadastro").toString().replaceAll("[^0-9]", ""));
 			ps.setString(5, request.getParameter("EndCadastro"));
 			ps.setString(6, request.getParameter("SenhaCliente"));
 			ps.executeUpdate();
@@ -68,7 +65,7 @@ public class ServletAdminCadCliente extends HttpServlet {
 	      PrintWriter out = response.getWriter();
 	      out.println("<html><body>");
 	      out.println("<center><h1>O Cliente foi cadastrado com sucesso! O número da conta será:</h1>");
-	      out.println("<h1>" + numContaCliente + "</h1>");
+	      out.println("<h1>" + new StringBuilder(request.getParameter("cpfCadastro")).reverse().toString().replaceAll("[^0-9]", "") + "</h1>");
 	      out.println("<h1>Para fazer qualquer movimentação, é preciso criar uma conta para ele!</h1>");
 	      out.println("<a href='admin/adminCadConta.jsp'>Clique aqui para Criar a Conta do Cliente</a>");
 	      out.println("<br><br><br><br>");
