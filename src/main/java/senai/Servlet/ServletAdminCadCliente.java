@@ -67,12 +67,12 @@ public class ServletAdminCadCliente extends HttpServlet {
 		response.setContentType("text/html");
 	      PrintWriter out = response.getWriter();
 	      out.println("<html><body>");
-	      out.println("<center><h1>O Cliente foi cadastrado com sucesso! O número da conta dele é:</h1>");
+	      out.println("<center><h1>O Cliente foi cadastrado com sucesso! O número da conta será:</h1>");
 	      out.println("<h1>" + numContaCliente + "</h1>");
 	      out.println("<h1>Para fazer qualquer movimentação, é preciso criar uma conta para ele!</h1>");
 	      out.println("<a href='admin/adminCadConta.jsp'>Clique aqui para Criar a Conta do Cliente</a>");
 	      out.println("<br><br><br><br>");
-	      out.println("<a href='admin/index.jsp'> Clique aqui para voltar </a></center>");
+	      out.println("<a href='admin/admin_dashboard.jsp'> Clique aqui para voltar </a></center>");
 	      out.println("</body></html>");
 
 	    
