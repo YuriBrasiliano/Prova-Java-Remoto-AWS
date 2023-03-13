@@ -17,7 +17,7 @@
 						Seja Bem Vindo ao Banco FIESP!<br/><br/><br/><br/>Por favor, preencher os dados para a abertura de conta.<br/><br/><br/></span>
 						<div class="text-center">
 						<span class="txt1">
-							<a href="conta.jsp" style="text-decoration:none;">Voltar</a><br>
+							<a href="index.jsp" style="text-decoration:none;">Voltar</a><br>
 						</span> </div>
 					
 				</div>

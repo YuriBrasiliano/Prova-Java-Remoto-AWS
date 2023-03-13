@@ -14,9 +14,9 @@
 
 		<%
 		String cliente = (String)session.getAttribute("cliente");
+
 		if (cliente == null ){
-			response.sendRedirect("index.jsp");
-			String numConta = new StringBuilder(cliente).reverse().toString();
+			response.sendRedirect("/index.jsp");
 		}
 		
 		%>
@@ -25,7 +25,27 @@
 			<div class="wrap-login100">
 				<div class="login100-pic">
 									<span class="login100-form-title">
-						Olá Novamente!<br/><br/>
+						Olá <%
+						        try {
+						        	String numConta = new StringBuilder(cliente).reverse().toString();
+						            Connection conn = ConnectionFactory.getConnection();
+						  	      String sql = "SELECT nomeCliente FROM clientes WHERE numContaCliente=?";
+							      PreparedStatement stmt = conn.prepareStatement(sql);
+							      stmt.setString(1, numConta);
+							      ResultSet resultado = stmt.executeQuery();
+						
+						            while (resultado.next()) {
+						                String nome = resultado.getString("nomeCliente");
+						                out.println(nome);}
+
+						
+						            resultado.close();
+						            stmt.close();
+						            conn.close();
+						        } catch (SQLException e) {
+						            out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
+						        }
+						    %><br/><br/>
 						Número da Conta<br/><br/>
 						<%
 						
@@ -33,6 +53,8 @@
 						if (cliente != null ){						
 						String numConta = new StringBuilder(cpfCliente).reverse().toString();
 						out.print(numConta);						
+						}else{
+							response.sendRedirect("/index.jsp");
 						}
 						String numConta = new StringBuilder(cliente).reverse().toString();
 						%>
@@ -49,8 +71,7 @@
 						
 						            while (resultado.next()) {
 						                String coluna1 = resultado.getString("saldoConta");
-						
-						                // ...
+
 						                out.println(coluna1);
 						            }
 						

@@ -21,9 +21,7 @@ import senai.util.ConnectionFactory;
 public class ServletDepositar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	private Cliente cliente;
 	private Connection conn;
-	private PreparedStatement ps;
 	private ResultSet rs; 
 	
 	
@@ -47,9 +45,9 @@ public class ServletDepositar extends HttpServlet {
 		try{
 			conn = ConnectionFactory.getConnection();
 		
-	      String sql = "SELECT saldoConta FROM conta WHERE numConta=?";
+	      String sql = "SELECT saldoConta FROM conta WHERE numConta = ?";
 	      PreparedStatement stmt = conn.prepareStatement(sql);
-	      stmt.setString(1, request.getParameter("depositarvalor"));
+	      stmt.setString(1, request.getParameter("depositarvalor").toString());
 	      rs = stmt.executeQuery();
           rs.next();
 	      int numero = Integer.parseInt(request.getParameter("valorDepositar"));
@@ -59,22 +57,19 @@ public class ServletDepositar extends HttpServlet {
 	      String sqldepositar = "UPDATE conta SET saldoConta = ? WHERE numConta=?";
 	      PreparedStatement stmtdepositar = conn.prepareStatement(sqldepositar);
 	      stmtdepositar.setInt(1, novoValor);
-	      stmtdepositar.setString(2, request.getParameter("depositarvalor"));
+	      stmtdepositar.setString(2, request.getParameter("depositarvalor").toString());
 	      int rs2 = stmtdepositar.executeUpdate();
-	      rs.next();
 	      
 	      String sqllog = "INSERT INTO transacoes VALUES(?, 'dep', NOW(), ?)";
 	      PreparedStatement stmtlog = conn.prepareStatement(sqllog);
 	      stmtlog.setInt(2, numero);
 	      stmtlog.setString(1, request.getParameter("depositarvalor"));
 	      int rs3 = stmtlog.executeUpdate();
-	      rs.next();
 		  
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
       out.println("<html><body>");
       out.println("<h1>O valor de " + numero + " reais foi depositado em sua conta, novo valor: " + (valorSalvo + numero) + " reais</h1>");
-      out.println("<a href='client/conta.jsp'> Voltar </a>");
       out.println("</body></html>");
 	   
           
@@ -82,8 +77,6 @@ public class ServletDepositar extends HttpServlet {
 	      stmt.close();
 	      conn.close();
 
-	    } catch (ClassNotFoundException | SQLException ex) {
-	      throw new ServletException(ex);
 	    } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

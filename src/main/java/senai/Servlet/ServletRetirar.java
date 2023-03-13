@@ -45,7 +45,6 @@ public class ServletRetirar extends HttpServlet {
               PrintWriter out = response.getWriter();
               out.println("<html><body>");
               out.println("<h1>O valor solicitado de " + numero + " é maior do que o valor em conta de (" + valorSalvo + ") por favor solicitar outro valor que não exceda o valor em conta</h1>");
-              out.println("<a href='client/conta.jsp'> Voltar </a>");
               out.println("</body></html>");
           } else {
               // Retornar mensagem informando que o número é menor ou igual
@@ -69,7 +68,6 @@ public class ServletRetirar extends HttpServlet {
               PrintWriter out = response.getWriter();
               out.println("<html><body>");
               out.println("<h1>O valor solicitado de " + numero + " reais foi retirado de sua conta, novo valor: " + (valorSalvo - numero) + " reais</h1>");
-              out.println("<a href='client/conta.jsp'> Voltar </a>");
               out.println("</body></html>");
           }
 	      rs.close();
