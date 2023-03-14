@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,13 +44,17 @@ public class ServletAdminCadCliente extends HttpServlet {
 		}
 	    
 	    try {
+			LocalDate data = LocalDate.parse(request.getParameter("dateCadastro"));
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			String dataFormatada = data.format(formatter);
+			
 			String sql = "INSERT INTO clientes(numContaCliente, nomeCliente,DataNascimentoCliente,CPFCliente,EnderecoCliente,senhaCliente)"
 					+ "VALUES (?, ?, ?, ?, ?, ?)";
 			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, new StringBuilder(request.getParameter("cpfCadastro")).reverse().toString().replaceAll("[^0-9]", ""));
 			ps.setString(2, request.getParameter("nomeCadastro"));
-			ps.setString(3, request.getParameter("dateCadastro"));
+			ps.setString(3, dataFormatada.toString().replaceAll("-", "/"));
 			ps.setString(4, request.getParameter("cpfCadastro").toString().replaceAll("[^0-9]", ""));
 			ps.setString(5, request.getParameter("EndCadastro"));
 			ps.setString(6, request.getParameter("SenhaCliente"));
@@ -61,16 +67,7 @@ public class ServletAdminCadCliente extends HttpServlet {
 		    try { ps.close(); } catch (Exception e) { /* Ignored */ }
 		    try { conn.close(); } catch (Exception e) { /* Ignored */ }
 		}
-		response.setContentType("text/html");
-	      PrintWriter out = response.getWriter();
-	      out.println("<html><body>");
-	      out.println("<center><h1>O Cliente foi cadastrado com sucesso! O número da conta será:</h1>");
-	      out.println("<h1>" + new StringBuilder(request.getParameter("cpfCadastro")).reverse().toString().replaceAll("[^0-9]", "") + "</h1>");
-	      out.println("<h1>Para fazer qualquer movimentação, é preciso criar uma conta para ele!</h1>");
-	      out.println("<a href='admin/adminCadConta.jsp'>Clique aqui para Criar a Conta do Cliente</a>");
-	      out.println("<br><br><br><br>");
-	      out.println("<a href='admin/admin_dashboard.jsp'> Clique aqui para voltar </a></center>");
-	      out.println("</body></html>");
+		response.sendRedirect("admin/clienteCadastradoSucesso.jsp");
 
 	    
 

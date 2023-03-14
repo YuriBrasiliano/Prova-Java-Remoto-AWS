@@ -50,27 +50,22 @@ public class ServletDepositar extends HttpServlet {
 	      stmt.setString(1, request.getParameter("depositarvalor").toString());
 	      rs = stmt.executeQuery();
           rs.next();
-	      int numero = Integer.parseInt(request.getParameter("valorDepositar"));
-	      int valorSalvo = rs.getInt("saldoConta");
-	      int novoValor = numero + valorSalvo;
+	      float numero = Float.parseFloat(request.getParameter("valorDepositar"));
+	      float valorSalvo = rs.getFloat("saldoConta");
+	      float novoValor = numero + valorSalvo;
 	      
 	      String sqldepositar = "UPDATE conta SET saldoConta = ? WHERE numConta=?";
 	      PreparedStatement stmtdepositar = conn.prepareStatement(sqldepositar);
-	      stmtdepositar.setInt(1, novoValor);
+	      stmtdepositar.setFloat(1, novoValor);
 	      stmtdepositar.setString(2, request.getParameter("depositarvalor").toString());
 	      int rs2 = stmtdepositar.executeUpdate();
 	      
 	      String sqllog = "INSERT INTO transacoes VALUES(?, 'dep', NOW(), ?)";
 	      PreparedStatement stmtlog = conn.prepareStatement(sqllog);
-	      stmtlog.setInt(2, numero);
+	      stmtlog.setFloat(2, numero);
 	      stmtlog.setString(1, request.getParameter("depositarvalor"));
-	      int rs3 = stmtlog.executeUpdate();
-		  
-      response.setContentType("text/html");
-      PrintWriter out = response.getWriter();
-      out.println("<html><body>");
-      out.println("<h1>O valor de " + numero + " reais foi depositado em sua conta, novo valor: " + (valorSalvo + numero) + " reais</h1>");
-      out.println("</body></html>");
+	      int rs3 = stmtlog.executeUpdate();		  
+	      response.sendRedirect("client/operacaoRealizada.jsp");
 	   
           
 	      rs.close();

@@ -1,6 +1,7 @@
 package senai.Servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,7 +49,11 @@ public class AdminServlet extends HttpServlet {
 		        session.setAttribute("admin", username);
 		        response.sendRedirect("admin/admin_dashboard.jsp");
 		      } else {
-		    	  response.sendRedirect("admin/index.jsp");
+		    	  PrintWriter out = response.getWriter();
+		    	   out.println("<script type=\"text/javascript\">");
+		    	   out.println("alert('CPF ou Senha Incorretos! Por favor tentar novamente!');");
+		    	   out.println("location='admin/index.jsp';");
+		    	   out.println("</script>");
 		      }
 
 		      // Fecha a conexão com o banco de dados

@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
         <%@ page import="java.sql.*" %>
     <%@ page import="senai.util.*" %>
+    <%@ page import="java.time.format.DateTimeFormatter" %>
+    <%@ page import="java.time.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,10 +37,8 @@
 							      ResultSet resultado = stmt.executeQuery();
 						
 						            while (resultado.next()) {
-						                String coluna1 = resultado.getString("saldoConta");
-						
-						                // ...
-						                out.println(coluna1);
+						            	out.println("R$");
+						                out.println(resultado.getString("saldoConta"));
 						            }
 						
 						            resultado.close();
@@ -69,11 +69,11 @@
                 String coluna2 = resultado.getString("TipoTransacao");
                 String coluna3 = resultado.getString("DataTransacao");
                 String color = null;
-
+    			
                if(coluna2.startsWith("dep")){coluna2 = "Depósito";color = "blue";}
                if(coluna2.startsWith("ret")){coluna2 = "Retirada";color = "red";}
                 
-                out.println("<tr><td align= 'center'>"+ coluna2 + "</td><td align= 'center'>" + coluna3 + "</td><td align= 'center'><font color='"+color+"'>" + coluna4 + "</font></td></tr>");
+                out.println("<tr><td align= 'center'>"+ coluna2 + "</td><td align= 'center'>" + coluna3 + "</td><td align= 'center'><font color='"+color+"'>R$ " + coluna4 + "</font></td></tr>");
             }
 
             resultado.close();

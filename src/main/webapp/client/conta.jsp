@@ -62,7 +62,7 @@
 									    ResultSet resultado = stmt.executeQuery();
 						
 						            while (resultado.next()) {
-						                out.println(resultado.getString("saldoConta"));
+						                out.println("R$ " + resultado.getString("saldoConta"));
 						            }						
 						            resultado.close();
 						            stmt.close();

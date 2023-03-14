@@ -7,6 +7,8 @@
 <head>
 	<title>Banco FIESC</title>
 	<meta charset="UTF-8">
+	<script src="../js/CPFMask.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
@@ -24,7 +26,7 @@
 				<form class="login100-form" action="../LoginServlet" method="post"><br />
 
 					<div class="wrap-input100">
-						<input class="input100" type="number" name="CPFCliente" placeholder="Digite seu CPF" required>
+						<input class="input100" type="text" name="CPFCliente" placeholder="Digite seu CPF" required oninput="mascara(this)">
 						<span class="focus-input100"></span>
 					</div>
 

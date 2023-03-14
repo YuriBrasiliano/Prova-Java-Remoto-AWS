@@ -5,7 +5,10 @@
 <head>
 	<title>Abrir conta FIESC</title>
 	<meta charset="UTF-8">
-	<script src="../js/validadorCPF.js"></script>
+	<script src="../js/CPFMask.js"></script>
+	<script src="../js/nomeMask.js"></script>
+	<script src="../js/enderecomask.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
@@ -24,7 +27,7 @@
 				</div>
 				<form class="login100-form" action="../ServletCriarConta" method="post">
 						<div class="wrap-input100">
-						<input class="input100" type="text" name="nomeCadastro" placeholder="Digite seu Nome Completo" required pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$">
+						<input class="input100" type="text" name="nomeCadastro" placeholder="Digite seu Nome Completo" required id="txt_firstCapital" oninput="nomeCompleto()" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$">
 						<span class="focus-input100"></span>
 					</div>
 					<div class="wrap-input100">
@@ -41,7 +44,7 @@
 					</div>
 
 					<div class="wrap-input100">
-						<input class="input100" type="text" name="EndCadastro" placeholder="Digite seu Endereço" required>
+						<input class="input100" type="text" name="EndCadastro" id="txt_firstCapitalendereco" oninput="endereco()" placeholder="Digite seu Endereço" required>
 						<span class="focus-input100"></span>
 					</div>
 						<br/><br/>

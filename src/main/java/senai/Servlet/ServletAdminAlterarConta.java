@@ -45,10 +45,8 @@ public class ServletAdminAlterarConta extends HttpServlet {
 	      stmt.setString(3, request.getParameter("SenhaCliente"));
 	      stmt.setString(4, request.getParameter("numConta"));
 	      int rs = stmt.executeUpdate();
-	      PrintWriter out = response.getWriter();
-	      		out.println("<html><body>");
-	          out.println("<h1>Dados Alterados Com Sucesso!</h1>");
-	          out.println("</body></html>");
+	      
+	      response.sendRedirect("admin/dadosAlteradosSucesso.jsp");
 	      
 	      stmt.close();
 	      conn.close();

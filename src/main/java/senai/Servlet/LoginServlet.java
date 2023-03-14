@@ -1,6 +1,7 @@
 package senai.Servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.*;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import senai.util.ConnectionFactory;
 
@@ -29,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 String username = request.getParameter("CPFCliente");
+		 String cpf = request.getParameter("CPFCliente");
 		    String password = request.getParameter("SenhaCliente");
 
 		    try{
@@ -37,17 +39,21 @@ public class LoginServlet extends HttpServlet {
 			
 		      String sql = "SELECT * FROM clientes WHERE CPFCliente=? AND SenhaCliente=?";
 		      PreparedStatement stmt = conn.prepareStatement(sql);
-		      stmt.setString(1, username);
+		      stmt.setString(1, cpf.replaceAll("[^0-9]", ""));
 		      stmt.setString(2, password);
 		      ResultSet rs = stmt.executeQuery();
 
 		      if (rs.next()) {
 		        // Cria uma sessão do usuário e redireciona para a página protegida
 		        HttpSession session = request.getSession();
-		        session.setAttribute("cliente", username);
+		        session.setAttribute("cliente", cpf.replaceAll("[^0-9]", ""));
 		        response.sendRedirect("client/conta.jsp");
 		      } else {
-		    	  response.sendRedirect("client/index.jsp");
+		    	  PrintWriter out = response.getWriter();
+		    	   out.println("<script type=\"text/javascript\">");
+		    	   out.println("alert('CPF ou Senha Incorretos! Por favor tentar novamente!');");
+		    	   out.println("location='client/index.jsp';");
+		    	   out.println("</script>");
 		      }
 
 		      // Fecha a conexão com o banco de dados

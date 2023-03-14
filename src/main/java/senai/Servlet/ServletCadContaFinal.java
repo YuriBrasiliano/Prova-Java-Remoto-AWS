@@ -58,12 +58,7 @@ public class ServletCadContaFinal extends HttpServlet {
 		    try { ps.close(); } catch (Exception e) { /* Ignored */ }
 		    try { conn.close(); } catch (Exception e) { /* Ignored */ }
 		}
-		response.setContentType("text/html");
-	      PrintWriter out = response.getWriter();
-	      out.println("<html><body>");
-	      out.println("<h1>Sua Conta foi criada com Sucesso! Por favor ir para página de login para entrar em sua conta!</h1>");
-	      out.println("<a href='client/index.jsp'> Faça Login Aqui </a>");
-	      out.println("</body></html>");
+		response.sendRedirect("admin/contaCadastradaSucesso.jsp");
 
 	    
 

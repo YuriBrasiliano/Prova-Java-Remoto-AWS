@@ -6,7 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="../js/validadorCPF.js"></script>
+<script src="../js/CPFMask.js"></script>
+<script src="../js/enderecomask.js"></script>
+<script src="../js/nomeMask.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <title>Cadastrar Cliente</title>
 </head>
@@ -22,7 +25,7 @@
 <div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic">
-									<span class="login100-form-title"><br/><br/><br/>Por favor, preencher os dados para cadastrar um cliente<br/><br/> (Note que ainda precisa cadastrar uma conta para tal cliente).<br/><br/><br/></span>
+									<span class="login100-form-title">Por favor, preencher os dados para cadastrar um cliente<br/><br/> (Note que ainda precisa cadastrar uma conta para tal cliente).<br/><br/><br/></span>
 						<div class="text-center">
 						<span class="txt1">
 							<a href="admin_dashboard.jsp" style="text-decoration:none;">Voltar</a><br>
@@ -32,7 +35,7 @@
 				<form class="login100-form" action="../ServletAdminCadCliente" method="post">
 				<input type = "hidden" name ="cmd" value="CriarConta"> <br />
 						<div class="wrap-input100">
-						<input class="input100" type="text" name="nomeCadastro" placeholder="Digite o Nome Completo" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
+						<input class="input100" type="text" name="nomeCadastro" placeholder="Digite o Nome Completo"  id="txt_firstCapital" oninput="nomeCompleto()" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
 						<span class="focus-input100"></span>
 					</div>
 					<div class="wrap-input100">
@@ -49,7 +52,7 @@
 					</div>
 
 					<div class="wrap-input100">
-						<input class="input100" type="text" name="EndCadastro" placeholder="Digite o Endereço" required>
+						<input class="input100" type="text" name="EndCadastro"  id="txt_firstCapitalendereco" oninput="endereco()" placeholder="Digite o Endereço" required>
 						<span class="focus-input100"></span>
 					</div>
 						<br/><br/>

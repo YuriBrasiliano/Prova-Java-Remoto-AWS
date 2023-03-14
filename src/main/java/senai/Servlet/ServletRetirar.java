@@ -36,8 +36,8 @@ public class ServletRetirar extends HttpServlet {
 	      stmt.setString(1, request.getParameter("retirarvalor"));
 	      rs = stmt.executeQuery();
           rs.next();
-	      int numero = Integer.parseInt(request.getParameter("valorRetirar"));
-	      int valorSalvo = rs.getInt("saldoConta");
+          float numero = Float.parseFloat(request.getParameter("valorRetirar"));
+          float valorSalvo = rs.getFloat("saldoConta");
 	      
 	      if (numero > valorSalvo) {
               // Retornar mensagem informando que o número é maior
@@ -48,27 +48,23 @@ public class ServletRetirar extends HttpServlet {
               out.println("</body></html>");
           } else {
               // Retornar mensagem informando que o número é menor ou igual
-        	  int novoValor = valorSalvo - numero;
+        	  float novoValor = valorSalvo - numero;
         			
         	      String sqllog = "INSERT INTO transacoes VALUES(?, 'ret', NOW(), ?)";
         	      PreparedStatement stmtlog = conn.prepareStatement(sqllog);
-        	      stmtlog.setInt(2, numero);
+        	      stmtlog.setFloat(2, numero);
         	      stmtlog.setString(1, request.getParameter("retirarvalor"));
         	      int rs2 = stmtlog.executeUpdate();
         	      rs.next();
         	      
         	      String sqlretirar = "UPDATE conta SET saldoConta = ? WHERE numConta=?";
         	      PreparedStatement stmtretirar = conn.prepareStatement(sqlretirar);
-        	      stmtretirar.setInt(1, novoValor);
+        	      stmtretirar.setFloat(1, novoValor);
         	      stmtretirar.setString(2, request.getParameter("retirarvalor"));
         	      int rs3 = stmtretirar.executeUpdate();
         	      rs.next();
         		  
-              response.setContentType("text/html");
-              PrintWriter out = response.getWriter();
-              out.println("<html><body>");
-              out.println("<h1>O valor solicitado de " + numero + " reais foi retirado de sua conta, novo valor: " + (valorSalvo - numero) + " reais</h1>");
-              out.println("</body></html>");
+        	      response.sendRedirect("client/operacaoRealizada.jsp");
           }
 	      rs.close();
 	      stmt.close();

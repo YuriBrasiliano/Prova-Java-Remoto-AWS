@@ -32,8 +32,8 @@
 							      ResultSet resultado = stmt.executeQuery();
 						
 						            while (resultado.next()) {
-						                String coluna1 = resultado.getString("saldoConta");
-						                out.println(coluna1);
+						            	out.println("R$");
+						                out.println(resultado.getString("saldoConta"));
 						            }
 						
 						            resultado.close();
@@ -53,7 +53,7 @@
 				<span class="login100-form-title">
 						Quanto deseja Depositar?</span>
 						<div class="wrap-input100">
-						<input class="input100" type="number" name="valorDepositar" placeholder="Valor a ser depositado" required>
+						<input class="input100" type="text" name="valorDepositar" placeholder="Valor a ser depositado" required pattern="^\d*(\.\d{0,2})?$">
 						<span class="focus-input100"></span>
 					</div>
 						<br/><br/>

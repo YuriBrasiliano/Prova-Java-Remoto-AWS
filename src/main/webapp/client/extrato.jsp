@@ -43,10 +43,7 @@
 							      ResultSet resultado = stmt.executeQuery();
 						
 						            while (resultado.next()) {
-						                String coluna1 = resultado.getString("saldoConta");
-						
-						                // ...
-						                out.println(coluna1);
+						                out.println("R$ " + resultado.getString("saldoConta"));
 						            }
 						
 						            resultado.close();
@@ -81,7 +78,7 @@
                if(coluna2.startsWith("dep")){coluna2 = "Depósito";color = "blue";}
                if(coluna2.startsWith("ret")){coluna2 = "Retirada";color = "red";}
                 
-                out.println("<tr><td align= 'center'>"+ coluna2 + "</td><td align= 'center'>" + coluna3 + "</td><td align= 'center'><font color='"+color+"'>" + coluna4 + "</font></td></tr>");
+                out.println("<tr><td align= 'center'>"+ coluna2 + "</td><td align= 'center'>" + coluna3 + "</td><td align= 'center'><font color='"+color+"'>R$ " + coluna4 + "</font></td></tr>");
             }
 
             resultado.close();

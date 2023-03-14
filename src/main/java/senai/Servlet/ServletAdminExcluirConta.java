@@ -43,9 +43,7 @@ public class ServletAdminExcluirConta extends HttpServlet {
 	      ResultSet rs = stmt.executeQuery();
 	      PrintWriter out = response.getWriter();
 	      if(rs.next()) {
-	    	  out.println("<html><body>");
-	          out.println("<h1>A conta possui transações! Logo não poderá ser excluida!</h1>");
-	          out.println("</body></html>");
+	    	  response.sendRedirect("admin/contaNaoExcluida.jsp");
 	      }else {
 	    	  String sql2 = "DELETE from conta WHERE numConta=?";
 		      PreparedStatement stmt2 = conn.prepareStatement(sql2);
@@ -56,11 +54,7 @@ public class ServletAdminExcluirConta extends HttpServlet {
 		      PreparedStatement stmt3 = conn.prepareStatement(sql3);
 		      stmt3.setString(1, request.getParameter("numConta"));
 		      int rs3 = stmt3.executeUpdate();
-		      
-		      
-	    	  out.println("<html><body>");
-	          out.println("<h1>Conta Excluida com Sucesso!</h1>");
-	          out.println("</body></html>");
+		      response.sendRedirect("admin/contaExcluida.jsp");
 	      }
 	      rs.close();
 	      stmt.close();

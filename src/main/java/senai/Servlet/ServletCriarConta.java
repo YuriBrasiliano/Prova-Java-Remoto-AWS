@@ -1,12 +1,13 @@
 package senai.Servlet;
 
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.io.PrintWriter;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,19 +38,25 @@ public class ServletCriarConta extends HttpServlet {
 			throw new ServletException("Erro " + erro.getMessage());
 		}        
 		try {
+			LocalDate data = LocalDate.parse(request.getParameter("dateCadastro"));
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			String dataFormatada = data.format(formatter);
+			
+			
 			String sql = "INSERT INTO clientes(numContaCliente,nomeCliente,DataNascimentoCliente, CPFCliente, EnderecoCliente, senhaCliente)"
 					+ "VALUES (?, ?, ?, ?, ? ,?)";
 			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, new StringBuilder(request.getParameter("cpfCadastro")).reverse().toString().replaceAll("[^0-9]", ""));
 			ps.setString(2, request.getParameter("nomeCadastro"));
-			ps.setString(3, request.getParameter("dateCadastro"));
+			ps.setString(3, dataFormatada.toString().replaceAll("-", "/"));
 			ps.setString(4, request.getParameter("cpfCadastro").toString().replaceAll("[^0-9]", ""));
 			ps.setString(5, request.getParameter("EndCadastro"));
 			ps.setString(6, request.getParameter("SenhaCliente"));
 			ps.executeUpdate();
 		} catch (Exception erro) {
 			throw new ServletException("Erro " + erro.getMessage());
+			
 		}
 		
 		try {
@@ -69,13 +76,7 @@ public class ServletCriarConta extends HttpServlet {
 		    try { ps.close(); } catch (Exception e) { /* Ignored */ }
 		    try { conn.close(); } catch (Exception e) { /* Ignored */ }
 		}
-		response.setContentType("text/html");
-	      PrintWriter out = response.getWriter();
-	      out.println("<html><body>");
-	      out.println("<h1>Sua Conta foi criada com Sucesso!</h1>");
-	      out.println("<a href='client/index.jsp'> Faça Login Aqui </a>");
-	      out.println("</body></html>");
-
-	    
+		response.sendRedirect("client/contaCriada.jsp");
+    
 
 }}
